@@ -1,5 +1,7 @@
 var name = prompt("What is your name?");
 // console.log(name);
+
+//USS Assembly object
 const USSAssembly = {
   name: name,
   hull: Math.random() * 20,
@@ -9,15 +11,13 @@ const USSAssembly = {
 console.log("\n");
 console.log(`${USSAssembly.name}, hull ${USSAssembly.hull}`);
 
-// let number = Math.round(Math.random() * 6) + 6;
-// console.log(number)
 
 let alienShipNumber = 6;
 let alienShips = [];
 
+//create the alien ships
 function createAlienShips() {
   // alienShips = [];
-  // let randomAlienShip ;
   for (let i = 0; i < alienShipNumber; i++) {
     let alienShip = {
       // name: `Ship Number ${i + 1}`, // Assigning a sequential ID to each alien ship
@@ -35,7 +35,7 @@ function createAlienShips() {
 }
 createAlienShips();
 
-
+//attack function for USS Assembly
 function USSAttack(attacker, target) {
   const hitAccuracy = Math.random();
   if (hitAccuracy < target.accuracy) {
@@ -49,21 +49,21 @@ function USSAttack(attacker, target) {
       return;
     }
     // USSAttack(attacker, target);
-    var confirmed = confirm ("Do you want to attack the next alien ship?");
-      if (confirmed){
-        USSAttack( USSAssembly, alienShips[0]);
-      }else{
-        console.log("Hope you enjoyed the game")
-      }
+    var confirmed = confirm("Do you want to attack the next alien ship?");
+    if (confirmed) {
+      USSAttack(USSAssembly, alienShips[0]);
+    } else {
+      console.log("Hope you enjoyed the game")
+    }
     // if (target.hull <= 0) {
     //   console.log(`Targeted alien ship is destroyed w`);
-      
+
     //   // if (target.name === USSAssembly.name) {
     //   //   console.log("YOU LOST THE GAME")
     //   //   return;
     //   // }
     // }
-    
+
   } else {
     console.log("You missed the targeted alien ship!!!");
     console.log("\n");
@@ -74,67 +74,17 @@ function USSAttack(attacker, target) {
 // console.log(alienShips)
 USSAttack(USSAssembly, alienShips[0]);
 
-function alienAttack(attacker, target){
+//Attack function for alien ships
+function alienAttack(attacker, target) {
   const hitAccuracy = Math.random();
-  if (hitAccuracy < target.accuracy){
+  if (hitAccuracy < target.accuracy) {
     console.log(`Alien ship hit the target USS Assembly!`);
     console.log("%c You LOST the game", 'color: white; font-weight:bold; font-size:20px; background-color:red');
     return;
-  }else{
+  } else {
     console.log("%c Aliens missed the USS Assembly!", 'color: blue; font-weight:bold; font-size:20px');
     console.log("\n");
     console.log("Now USS Assembly Attacks");
     USSAttack(USSAssembly, alienShips[0])
   }
 }
-
-// const aliens = createAlienShips();
-// console.log(aliens)
-
-//attack function considering the accuracy for each hit
-// function attack(attacker, target) {
-//   const hitAccuracy = Math.random();
-//   if (hitAccuracy < attacker.accuracy) {
-//     console.log(`${attacker.name} hit the target ${target.name}`);
-//     alienShips.shift();
-//     console.log(alienShips)
-//     target.hull -= attacker.firepower;
-//     if (target.hull <= 0) {
-//       console.log(`${target.name} is destroyed`);
-//       if (target.name === name) {
-//         console.log("YOU LOST THE GAME")
-//         return;
-//       }
-//     }
-//     var confirmed = confirm("Do you want to attack again?");
-//     if (confirmed && attacker === USSAssembly) {
-//       console.log("YOU are attacking aliens \n");
-//       startBattle();
-//     } else if (confirmed && attacker === createAlienShips()) {
-//       console.log("Aliens are attacking YOU \n");
-//       attack(createAlienShips(), USSAssembly);
-//     } else {
-//       console.log("Hope you enjoyed the game! \n");
-//     }
-//   } else {
-//     console.log('%c You MISSED the ship' + ', ' + attacker.name, 'color: blue; font-weight:bold');
-//     // attack(createAlienShips(), USSAssembly);
-//     if (attacker === USSAssembly){
-
-//       console.log("now aliens attack \n")
-//       attack(createAlienShips(), USSAssembly);
-//     } 
-//     else {
-//       console.log("now YOU Assembly attack ")
-//       attack(USSAssembly, createAlienShips());
-//     }
-
-//   }
-// }
-
-// function startBattle() {
-//   // const aliens = createAlienShips();
-//   attack(USSAssembly, createAlienShips());
-// }
-
-// startBattle();
